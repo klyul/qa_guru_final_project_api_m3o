@@ -1,5 +1,3 @@
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +10,7 @@ public class M3OListTablesTest {
 
     @BeforeAll
     static void beforeAll() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
     }
 
     @Test

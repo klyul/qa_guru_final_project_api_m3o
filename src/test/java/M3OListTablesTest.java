@@ -1,6 +1,7 @@
 import configs.ApiConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import models.UserModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -33,4 +34,21 @@ public class M3OListTablesTest {
         System.out.println(response.extract().asString());
 
     }
+    @Test
+    @Tag("smoke")
+    void createUserTest() {
+
+        ValidatableResponse response = (ValidatableResponse) step("Create user", () ->
+                given(baseRequestSpec)
+                        .when()
+                        .post("/v1/db/Create")
+                        .then()
+                        .log().status()
+                        .log().body()
+                        .spec(okResponseSpec))
+                .statusCode(200));
+        System.out.println(response.extract().asString());
+
+    }
 }
+

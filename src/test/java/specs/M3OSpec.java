@@ -23,5 +23,10 @@ public class M3OSpec {
             .expectStatusCode(200)
             .build();
 
+    public static ResponseSpecification errorCode400ResponseSpec = new ResponseSpecBuilder()
+            .log(ALL)
+            .expectStatusCode(400)
+            .build();
+
 
 }

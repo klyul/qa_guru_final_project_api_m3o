@@ -1,12 +1,8 @@
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
-import models.CreateUserModel;
-import models.ErrorModel;
-import models.TablesModel;
-import models.UserRecord;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import lombok.SneakyThrows;
+import models.*;
+import org.junit.jupiter.api.*;
 
 import static configs.ApiConfig.getApiToken;
 import static configs.ApiConfig.runApiConfig;
@@ -16,16 +12,23 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.assertj.core.api.Assertions.assertThat;
 import static specs.M3OSpec.*;
+import static steps.ApiSteps.*;
+
 
 public class M3OListTablesTest {
 
+    static String[] testTables = new String[]{"example1"};
+
     @BeforeEach
-    void beforeAll() {
+    @SneakyThrows
+    public void beforeAll() {
         runApiConfig();
     }
 
     @Test
     @Tag("smoke")
+    @DisplayName("Проверяем получения списка таблиц с таблицей persistent")
+    @Description("Тестируем получение списка таблиц с таблицей persistent, которая не удаляется")
     void getTables() {
 
         TablesModel tablesModel = step("Listing tables", () ->
@@ -42,8 +45,9 @@ public class M3OListTablesTest {
     }
 
     @Test
-    @Tag("smoke")
-    @Description("Request sent with missing user record returns error 400")
+    @Tag("regression")
+    @DisplayName("Проверяем, что запрос создания без нужного джейсона приводит к ошибке 400")
+    @Description("Пытаемся создать пользователя, не отправляя джейсона на эндпойнт -- ошибка  400")
     void tryToCreateUserWithoutRecordTest() {
 
         ErrorModel errorModel = step("Trying to create a user with empty json", () ->
@@ -54,18 +58,20 @@ public class M3OListTablesTest {
                         .log().status()
                         .spec(errorCode400ResponseSpec)
                         .extract().as(ErrorModel.class));
-        step("Error id is 'db.create'", () -> assertThat(errorModel.getId()).isEqualTo("db.create"));
-        step("Error detail is 'missing record'", () -> assertThat(errorModel.getDetail()).isEqualTo("missing record"));
-        step("Error status is 'Bad Request'", () -> assertThat(errorModel.getStatus()).isEqualTo("Bad Request"));
+        step("ID ошибки это 'db.create'", () -> assertThat(errorModel.getId()).isEqualTo("db.create"));
+        step("detail ошибки это 'missing record'", () -> assertThat(errorModel.getDetail()).isEqualTo("missing record"));
+        step("status ошибки это 'Bad Request'", () -> assertThat(errorModel.getStatus()).isEqualTo("Bad Request"));
 
     }
 
     @Test
     @Tag("smoke")
+    @DisplayName("Проверяем создание пользователя")
+    @Description("Создание пользователя, проверка респонса создания,  чтение-проверка записи о созданном пользователе")
     void createUserTestWithModel() {
 
         CreateUserModel createUserModel = new CreateUserModel();
-        UserRecord userRecord = new UserRecord(42, "1", true, "Jane");
+        UserRecord userRecord = new UserRecord(43, "1", true, "Jane");
 
         createUserModel.setTable("example");
         createUserModel.setRecord(userRecord);
@@ -85,37 +91,28 @@ public class M3OListTablesTest {
 
     @Test
     @Tag("smoke")
-    void createUserTest() {
+    @DisplayName("Проверяем обновление записи о пользователе в таблице")
+    @Description("Обновление ID пользователя, чтение-проверка записи о созданном пользователе")
+    void updateIdUserTest() {
+        CreateUserModel createUserModel = new CreateUserModel();
+        UserRecord userRecord = new UserRecord(43, "1", true, "Jane");
 
-        ValidatableResponse response = (ValidatableResponse) step("Create user", () ->
+        createUserModel.setTable("example");
+        createUserModel.setRecord(userRecord);
+
+        ValidatableResponse response = step("Update user", () ->
                 given(baseRequestSpec)
+                        .body(createUserModel)
                         .when()
-                        .post("/v1/db/Create")
+                        .post("/v1/db/Update")
                         .then()
                         .spec(okResponseSpec));
 
-        System.out.println(response.statusCode(200));
+        System.out.println(response.extract().asString());
+
 
     }
 
-    @Test
-    void demoNoSpecificationsExample() {
-
-        ValidatableResponse response = step("Listing tables", () ->
-                given()
-                        .filter(withCustomTemplates())
-                        .log().all()
-                        .contentType(JSON)
-                        .header("authorization", getApiToken())
-                        .when()
-                        .get("/v1/db/ListTables")
-                        .then()
-                        .log()
-                        .all()
-                        .statusCode(200)
-                        .and());
-
-    }
 
 
 

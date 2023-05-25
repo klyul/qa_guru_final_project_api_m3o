@@ -64,3 +64,22 @@
 <p align="center">
 <img src="images/tgbot.png">
 
+##  <img src="images/Allure_TO.svg" width="50" height="50"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/2344/launches)
+
+### Основной дашборд
+<p align="center">
+<img src="images/Allure_TODash.png">
+</p>
+
+### Список тестов с результатами прогона
+
+<p align="center">
+  <img src="images/allure-testops-testcases.png" alt="dashboard" width="900">
+</p>
+
+### Тест-кейсы
+Тест-кейсы, автоматические созданные в Allure Testops, на основе разработанных автотестов
+<p align="center">
+  <img src="images/allure-testops-results.png" alt="testcase" width="900">
+</p>
+

@@ -47,3 +47,13 @@
 <p align="center">
 </p>
 
+## <a href="https://github.com/allure-framework/allure2"><img src="images/Allure.svg" width="50" height="50"  alt="Allure"/></a> Allure отчеты
+:information_source: По итогам сборки в Jenkins собирается отчет в Allure Report
+> Для просмотра необходимо залогиниться в Jenkins
+* Подключено добавление в отчет:
+    - исходного кода страницы
+    - логов браузера
+<p align="center">
+<img src="images/allurereport1.png">
+<img src="images/allurereport2.png">
+</p>

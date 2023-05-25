@@ -83,3 +83,8 @@
   <img src="images/allure-testops-results.png" alt="testcase" width="900">
 </p>
 
+## <img width="30" alt="Jira" src="images/jira-logo.svg"> Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-711)
+:information_source: Настроена интеграция Allure TestOps с Jira.
+Тест-кейсы и результаты прогонов можно прикреплять к необходимым задачам.
+
+<img alt="Jira" src="images/Jira.png">

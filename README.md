@@ -57,3 +57,10 @@
 <img src="images/allurereport1.png">
 <img src="images/allurereport2.png">
 </p>
+
+## <img src="images/Telegram.svg" width="50" height="50"> Отчёт в Telegram 
+
+После завершения сборки сообщение с основными результатами прогона тестов отправляется через созданный бот в выбранный телеграм-канал
+<p align="center">
+<img src="images/tgbot.png">
+

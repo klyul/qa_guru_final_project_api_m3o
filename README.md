@@ -19,7 +19,8 @@
 * <a href="#testops">Интеграция с Allure TestOps</a>
 
 * <a href="#jira">Интеграция с Jira</a>
-* 
+
+
 ## :hammer_and_wrench: <a id="tools"></a> Технологии и инструменты
 <p align="center">
 <a href="https://www.jetbrains.com/idea/"><img src="images/Idea.svg" width="50" height="50"  alt="IDEA"/></a>

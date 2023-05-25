@@ -1,7 +1,7 @@
 # Проект по автоматизации тестирования для M3o
 <a target="_blank" href="https://m3o.com//">Cайт M3o</a>
 
-<image src=https://m3o.com/logo-white.png>
+<img src="images/logom30.png">
 
 ## :pushpin: <a id="list"></a> Содержание:
 

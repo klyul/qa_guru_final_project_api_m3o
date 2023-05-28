@@ -1,5 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import io.restassured.response.ValidatableResponse;
 import lombok.SneakyThrows;
 import models.*;
@@ -25,7 +26,7 @@ public class M3OListTablesTest {
         runApiConfig();
         cleanData(testTables);
     }
-
+    @Story("Получение списка таблиц")
     @Test
     @Tag("smoke")
     @DisplayName("Проверяем получения списка таблиц с таблицей persistent")
@@ -45,6 +46,7 @@ public class M3OListTablesTest {
 
     }
 
+    @Story("Создание пользователя")
     @Test
     @Tag("regression")
     @DisplayName("Проверяем, что запрос создания без нужного джейсона приводит к ошибке 400")
@@ -65,6 +67,7 @@ public class M3OListTablesTest {
 
     }
 
+    @Story("Создание пользователя")
     @Test
     @Tag("smoke")
     @DisplayName("Проверяем создание пользователя")
@@ -87,7 +90,7 @@ public class M3OListTablesTest {
 
     }
 
-
+    @Story("Создание пользователя")
     @Test
     @Tag("smoke")
     @DisplayName("Проверяем обновление записи о пользователе в таблице")
@@ -117,7 +120,7 @@ public class M3OListTablesTest {
 
     }
 
-    //ReadByIDModel
+    @Story("Удаление пользователя")
     @Test
     @Tag("smoke")
     @DisplayName("Проверяем удаление записи о пользователе в таблице")
@@ -144,8 +147,7 @@ public class M3OListTablesTest {
 
         @AfterAll
     static void afterAll() {
-        //TODO: enable cleaning when reading test be working
-     //   cleanData(testTables);
+            cleanData(testTables);
     }
 
 

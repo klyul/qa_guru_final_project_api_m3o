@@ -48,6 +48,7 @@
 ```
 
 ## <a href="https://www.jenkins.io/"><img src="images/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/)
+## <a href="https://www.jenkins.io/" id="jenkins"></a>
 
 Для запуска сборки необходимо нажать кнопку <code><strong>*Собрать*</strong></code>.
 <a href="https://https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/#"><img src="images/jenkins.png" alt="jenkins"/></a>

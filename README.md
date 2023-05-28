@@ -47,8 +47,7 @@
  gradle clean test
 ```
 
-## <a href="https://www.jenkins.io/"><img src="images/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/)
-## <a id="jenkins"></a>
+## <a href="https://www.jenkins.io/" id="jenkins"><img src="images/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/)
 
 Для запуска сборки необходимо нажать кнопку <code><strong>*Собрать*</strong></code>.
 <a href="https://https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/#"><img src="images/jenkins.png" alt="jenkins"/></a>
@@ -67,14 +66,14 @@
 <img src="images/allurereport2.png">
 </p>
 
-## <img src="images/Telegram.svg" width="50" height="50" id="telegram"> Отчёт в Telegram 
+## <a id="telegram"><img src="images/Telegram.svg" width="50" height="50" ></a> Отчёт в Telegram 
 
 После завершения сборки сообщение с основными результатами прогона тестов отправляется через созданный бот в выбранный телеграм-канал
 <p align="center">
 <img src="images/tgbot.png">
 
-##  <img src="images/Allure_TO.svg" width="50" height="50"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/2344/launches)
-## <a id="allureto"></a>
+##  <a id="testops"><img src="images/Allure_TO.svg" width="50" height="50"></a> Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/2344/launches)
+
 
 ### Основной дашборд
 <p align="center">
@@ -93,8 +92,8 @@
   <img src="images/allure-testops-results.png" alt="testcase" width="900">
 </p>
 
-## <img width="30" alt="Jira" src="images/jira-logo.svg"> Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-711)
-## <a id="jira"></a>
+## <a id="jira"><img width="30" alt="Jira" src="images/jira-logo.svg"></a> Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-711)
+
 
 :information_source: Настроена интеграция Allure TestOps с Jira.
 Тест-кейсы и результаты прогонов можно прикреплять к необходимым задачам.

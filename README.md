@@ -34,7 +34,7 @@
 </p>
 
 
-## :scroll: Реализованные проверки
+## :scroll: <a id="cases"></a> Реализованные проверки
 
 * Проверка наличия таблицы
 * Создание записи
@@ -42,7 +42,7 @@
 * Удаление записи
 * Негативный тест на создание записи без требуемого JSON
 
-## :computer: Запуск из терминала
+## :computer: <a id="console"></a> Запуск из терминала
 ```bash
  gradle clean test
 ```
@@ -54,7 +54,7 @@
 <p align="center">
 </p>
 
-## <a href="https://github.com/allure-framework/allure2"><img src="images/Allure.svg" width="50" height="50"  alt="Allure"/></a> Allure отчеты
+## <a href="https://github.com/allure-framework/allure2" id="allure"><img src="images/Allure.svg" width="50" height="50"  alt="Allure"  /></a> Allure отчеты
 :information_source: По итогам сборки в Jenkins собирается отчет в Allure Report
 > Для просмотра необходимо залогиниться в Jenkins
 * Подключено добавление в отчет:
@@ -66,7 +66,7 @@
 <img src="images/allurereport2.png">
 </p>
 
-## <img src="images/Telegram.svg" width="50" height="50"> Отчёт в Telegram 
+## <img src="images/Telegram.svg" width="50" height="50" id="telegram"> Отчёт в Telegram 
 
 После завершения сборки сообщение с основными результатами прогона тестов отправляется через созданный бот в выбранный телеграм-канал
 <p align="center">

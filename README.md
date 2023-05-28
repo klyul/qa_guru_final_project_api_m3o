@@ -48,7 +48,7 @@
 ```
 
 ## <a href="https://www.jenkins.io/"><img src="images/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/)
-## <a href="https://www.jenkins.io/" id="jenkins"></a>
+## <a id="jenkins"></a>
 
 Для запуска сборки необходимо нажать кнопку <code><strong>*Собрать*</strong></code>.
 <a href="https://https://jenkins.autotests.cloud/job/018_klyul_Diplom_API/#"><img src="images/jenkins.png" alt="jenkins"/></a>
@@ -74,6 +74,7 @@
 <img src="images/tgbot.png">
 
 ##  <img src="images/Allure_TO.svg" width="50" height="50"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/2344/launches)
+## <a id="allureto"></a>
 
 ### Основной дашборд
 <p align="center">
@@ -93,6 +94,8 @@
 </p>
 
 ## <img width="30" alt="Jira" src="images/jira-logo.svg"> Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-711)
+## <a id="jira"></a>
+
 :information_source: Настроена интеграция Allure TestOps с Jira.
 Тест-кейсы и результаты прогонов можно прикреплять к необходимым задачам.
 

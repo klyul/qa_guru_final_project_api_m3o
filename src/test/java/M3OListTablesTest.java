@@ -1,4 +1,5 @@
 import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import io.restassured.response.ValidatableResponse;
@@ -16,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static specs.M3OSpec.*;
 import static steps.ApiSteps.*;
 
+@Owner("Yuliya K")
 
 public class M3OListTablesTest {
 
@@ -26,6 +28,7 @@ public class M3OListTablesTest {
         runApiConfig();
         cleanData(testTables);
     }
+
     @Story("Получение списка таблиц")
     @Test
     @Tag("smoke")

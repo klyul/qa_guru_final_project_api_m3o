@@ -53,9 +53,7 @@ public class ApiSteps {
         TableModel tableModel = new TableModel();
         tableModel.setTable(tableName);
 
-        ValidatableResponse response =
-
-                given(baseRequestSpec)
+        given(baseRequestSpec)
                         .body(tableModel)
                         .when()
                         .post("/v1/db/DropTable")
@@ -64,7 +62,7 @@ public class ApiSteps {
 
     @Step("Стираем в базе таблицы, которые использовались в тестах: {0}")
     @SneakyThrows
-    public static void cleanData(String[] tables)  {
+    public static void cleanData(String[] tables) {
         for (String str : tables) {
             dropTable(str);
 

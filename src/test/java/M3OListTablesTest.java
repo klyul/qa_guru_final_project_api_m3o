@@ -1,7 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
-import io.restassured.response.ValidatableResponse;
 import lombok.SneakyThrows;
 import models.*;
 import org.junit.jupiter.api.*;
@@ -17,11 +16,17 @@ import static steps.ApiSteps.*;
 
 public class M3OListTablesTest {
 
-    static String[] testTables = new String[]{"example1","example2"};
+    private final static String[] testTables = new String[]{"example1", "example2"};
+
     @BeforeAll
     @SneakyThrows
     static void beforeAll() {
         runApiConfig();
+        cleanData(testTables);
+    }
+
+    @AfterAll
+    static void afterAll() {
         cleanData(testTables);
     }
 
@@ -77,15 +82,15 @@ public class M3OListTablesTest {
 
         CreateUserResponseModel response = createUserRecord(testTables[0], userRecord);
 
-        step("Проверяем что ID в респонсе соответствует заданному", ()-> assertThat(response.getId()).isEqualTo("1"));
+        step("Проверяем что ID в респонсе соответствует заданному", () -> assertThat(response.getId()).isEqualTo("1"));
 
         UserRecords records = readRecordFromTableByID(new ReadByIDModel("1", testTables[0]));
         UserRecord returnedRecord = records.getRecords().get(0);
 
-        step("У прочтенной записи age = 42", ()-> assertThat(returnedRecord.getAge()).isEqualTo(42));
-        step("У прочтенной записи id = '1'", ()-> assertThat(returnedRecord.getId()).isEqualTo("1"));
-        step("У прочтенной записи isActive = true", ()-> assertThat(returnedRecord.isActive()).isEqualTo(true));
-        step("У прочтенной записи name = 'Jane'", ()-> assertThat(returnedRecord.getName()).isEqualTo("Jane"));
+        step("У прочтенной записи age = 42", () -> assertThat(returnedRecord.getAge()).isEqualTo(42));
+        step("У прочтенной записи id = '1'", () -> assertThat(returnedRecord.getId()).isEqualTo("1"));
+        step("У прочтенной записи isActive = true", () -> assertThat(returnedRecord.isActive()).isEqualTo(true));
+        step("У прочтенной записи name = 'Jane'", () -> assertThat(returnedRecord.getName()).isEqualTo("Jane"));
 
     }
 
@@ -96,11 +101,11 @@ public class M3OListTablesTest {
     @Description("Обновление ID пользователя, чтение-проверка записи о созданном пользователе")
     void updateIdUserTest() {
         UserRecord userRecord = new UserRecord(42, "2", true, "Jane");
-        CreateUserResponseModel response = createUserRecord(testTables[1], userRecord);
+        createUserRecord(testTables[1], userRecord);
         UserRecord userRecord2 = new UserRecord(21, "2", false, "Kris");
         CreateUserModel createUserModel2 = new CreateUserModel(userRecord2, testTables[1]);
 
-        ValidatableResponse response2 = step("Update user", () ->
+        step("Update user", () ->
                 given(baseRequestSpec)
                         .body(createUserModel2)
                         .when()
@@ -111,10 +116,10 @@ public class M3OListTablesTest {
         UserRecords records = readRecordFromTableByID(new ReadByIDModel("2", testTables[1]));
         UserRecord returnedRecord = records.getRecords().get(0);
 
-        step("У прочтенной записи age = 21", ()-> assertThat(returnedRecord.getAge()).isEqualTo(21));
-        step("У прочтенной записи id = '2'", ()-> assertThat(returnedRecord.getId()).isEqualTo("2"));
-        step("У прочтенной записи isActive = false", ()-> assertThat(returnedRecord.isActive()).isEqualTo(false));
-        step("У прочтенной записи name = 'Kris'", ()-> assertThat(returnedRecord.getName()).isEqualTo("Kris"));
+        step("У прочтенной записи age = 21", () -> assertThat(returnedRecord.getAge()).isEqualTo(21));
+        step("У прочтенной записи id = '2'", () -> assertThat(returnedRecord.getId()).isEqualTo("2"));
+        step("У прочтенной записи isActive = false", () -> assertThat(returnedRecord.isActive()).isEqualTo(false));
+        step("У прочтенной записи name = 'Kris'", () -> assertThat(returnedRecord.getName()).isEqualTo("Kris"));
 
 
     }
@@ -126,10 +131,10 @@ public class M3OListTablesTest {
     @Description("Проверка удаления созданной записи о пользователе")
     void deleteUserTest() {
         UserRecord userRecord = new UserRecord(42, "3", true, "Jane");
-        CreateUserResponseModel response = createUserRecord(testTables[1], userRecord);
-        ReadByIDModel readByIDModel = new ReadByIDModel("3",testTables[1]);
+        createUserRecord(testTables[1], userRecord);
+        ReadByIDModel readByIDModel = new ReadByIDModel("3", testTables[1]);
 
-        ValidatableResponse response2 = step("Delete user", () ->
+        step("Delete user", () ->
                 given(baseRequestSpec)
                         .body(readByIDModel)
                         .when()
@@ -139,14 +144,8 @@ public class M3OListTablesTest {
 
         UserRecords records = readRecordFromTableByID(new ReadByIDModel("3", testTables[1]));
 
-        step("У прочтенной записи age = 21", ()-> assertThat(records.getRecords().size()).isEqualTo(0));
+        step("У прочтенной записи age = 21", () -> assertThat(records.getRecords().size()).isEqualTo(0));
 
-    }
-
-
-        @AfterAll
-    static void afterAll() {
-            cleanData(testTables);
     }
 
 

@@ -27,7 +27,7 @@ allure {
 }
 
 dependencies {
-    testImplementation (
+    testImplementation(
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",

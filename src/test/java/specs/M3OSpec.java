@@ -11,18 +11,18 @@ import static io.restassured.filter.log.LogDetail.ALL;
 import static io.restassured.http.ContentType.JSON;
 
 public class M3OSpec {
-    public static RequestSpecification baseRequestSpec = with()
+    public final static RequestSpecification baseRequestSpec = with()
             .filter(withCustomTemplates())
             .log().all()
             .contentType(JSON)
             .header("authorization", getApiToken());
 
-    public static ResponseSpecification okResponseSpec = new ResponseSpecBuilder()
+    public final static ResponseSpecification okResponseSpec = new ResponseSpecBuilder()
             .log(ALL)
             .expectStatusCode(200)
             .build();
 
-    public static ResponseSpecification errorCode400ResponseSpec = new ResponseSpecBuilder()
+    public final static ResponseSpecification errorCode400ResponseSpec = new ResponseSpecBuilder()
             .log(ALL)
             .expectStatusCode(400)
             .build();
